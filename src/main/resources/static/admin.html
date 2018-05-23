@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en" ng-app="pharmDisplay">
+<head>
+    <meta charset="utf-8">
+    <title>Pharmacy Display</title>
+    <script src="js/angular.js"></script>
+    <script src="js/app.js"></script>
+
+</head>
+<body ng-controller="AdminController">
+
+<div>
+    <input ng-model="newUser.name" />
+    <a ng-click="add()">Add</a>
+</div>
+
+<ul>
+    <li ng-repeat="user in users">{{user.name}} | {{user.status}} | <a ng-click="ready(user)" ng-if="user.status == 'received'">Ready</a> | <a ng-click="remove(user)">Remove</a>
+    </li>
+</ul>
+
+</body>
+</html>
