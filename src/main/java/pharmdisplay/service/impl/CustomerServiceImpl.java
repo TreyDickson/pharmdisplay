@@ -1,5 +1,6 @@
 package pharmdisplay.service.impl;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -31,6 +32,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 				customer.setName(customerDto.getName());
 				customer.setStatus(customerDto.getStatus());
+				customer.setLastUpdate(Instant.now());
 
 				customerRepository.save(customer);
 			} else {
@@ -45,6 +47,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 			customer.setName(customerDto.getName());
 			customer.setStatus(customerDto.getStatus());
+			customer.setLastUpdate(Instant.now());
 
 			customerRepository.save(customer);
 		}
@@ -58,12 +61,12 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public List<CustomerDto> findAllCustomers() {
-		return customerRepository.findAll().stream().map(customer -> new CustomerDto(customer)).collect(Collectors.toList());
+		return customerRepository.findAllByOrderByLastUpdateDesc().stream().map(customer -> new CustomerDto(customer)).collect(Collectors.toList());
 	}
 
 	@Override
 	public List<CustomerDto> findAllByStatus(String status) {
-		return customerRepository.findByStatus(status).stream().map(customer -> new CustomerDto(customer)).collect(Collectors.toList());
+		return customerRepository.findByStatusOrderByLastUpdateDesc(status).stream().map(customer -> new CustomerDto(customer)).collect(Collectors.toList());
 	}
 
 }

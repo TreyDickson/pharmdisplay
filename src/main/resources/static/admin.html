@@ -15,7 +15,7 @@
 </div>
 
 <ul>
-    <li ng-repeat="user in users">{{user.name}} | {{user.status}} | <a ng-click="ready(user)" ng-if="user.status == 'received'">Ready</a> | <a ng-click="remove(user)">Remove</a>
+    <li ng-repeat="user in users">{{user.name}} | {{user.status}} | {{user.lastUpdate | date: 'hh:mm a'}} <span ng-if="user.status == 'received'">|</span> <a ng-click="ready(user)" ng-if="user.status == 'received'">Ready</a> | <a ng-click="remove(user)">Remove</a>
     </li>
 </ul>
 

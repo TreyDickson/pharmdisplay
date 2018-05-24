@@ -1,5 +1,7 @@
 package pharmdisplay.domain.jpa;
 
+import java.time.Instant;
+
 import javax.persistence.*;
 
 @Entity
@@ -15,6 +17,9 @@ public class Customer {
 
 	@Column(nullable = false)
 	private String status;
+
+	@Column(nullable = false)
+	private Instant lastUpdate;
 
 	public Long getId() {
 		return id;
@@ -38,5 +43,13 @@ public class Customer {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public Instant getLastUpdate() {
+		return lastUpdate;
+	}
+
+	public void setLastUpdate(Instant lastUpdate) {
+		this.lastUpdate = lastUpdate;
 	}
 }

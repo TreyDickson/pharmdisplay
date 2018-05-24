@@ -44,7 +44,7 @@ angular.module("pharmDisplay",[]).controller("MainController", ['$interval', '$h
 
     $interval(function() {
         findAll();
-    }, 5000);
+    }, 1000);
 
     function findAll() {
         $http.get("/find/all").then(function(result) {

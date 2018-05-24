@@ -9,12 +9,16 @@
 </head>
 <body ng-controller="MainController">
 
-<ul>
-    <li ng-repeat="user in ready">{{user.name}}</li>
-</ul>
+<h2>Ready</h2>
 
 <ul>
-    <li ng-repeat="user in received">{{user.name}}</li>
+    <li ng-repeat="user in ready">{{user.name}} | {{user.lastUpdate | date: 'hh:mm a'}} </li>
+</ul>
+
+<h2>Received</h2>
+
+<ul>
+    <li ng-repeat="user in received">{{user.name}} | {{user.lastUpdate | date: 'hh:mm a'}} </li>
 </ul>
 
 </body>

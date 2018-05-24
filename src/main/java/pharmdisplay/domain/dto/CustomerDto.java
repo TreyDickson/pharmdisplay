@@ -1,6 +1,7 @@
 package pharmdisplay.domain.dto;
 
 import java.io.Serializable;
+import java.time.Instant;
 
 import pharmdisplay.domain.jpa.Customer;
 
@@ -9,6 +10,7 @@ public class CustomerDto implements Serializable {
 	private Long id;
 	private String name;
 	private String status;
+	private Instant lastUpdate;
 
 	public CustomerDto () {}
 
@@ -16,6 +18,7 @@ public class CustomerDto implements Serializable {
 		this.id = customer.getId();
 		this.name = customer.getName();
 		this.status = customer.getStatus();
+		this.lastUpdate = customer.getLastUpdate();
 	}
 
 	public Long getId() {
@@ -40,5 +43,13 @@ public class CustomerDto implements Serializable {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public Instant getLastUpdate() {
+		return lastUpdate;
+	}
+
+	public void setLastUpdate(Instant lastUpdate) {
+		this.lastUpdate = lastUpdate;
 	}
 }

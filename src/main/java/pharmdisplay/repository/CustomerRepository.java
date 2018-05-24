@@ -10,5 +10,7 @@ import pharmdisplay.domain.jpa.Customer;
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
-	List<Customer> findByStatus(String status);
+	List<Customer> findAllByOrderByLastUpdateDesc();
+
+	List<Customer> findByStatusOrderByLastUpdateDesc(String status);
 }
